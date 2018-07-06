@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Circles</title>
+    <meta charset="utf-8" />
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .circle {
+            opacity: 0;
+            position: absolute;
+            border: 1px black solid;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -ms-border-radius: 50%;
+        }
+
+        .circle:hover {
+            cursor: pointer;
+        }
+
+        .fade {
+            transition: opacity 0.3s linear;
+            -moz-transition: opacity 0.3s linear;
+            -webkit-transition: opacity 0.3s linear;
+            -ms-transition: opacity 0.3s linear;
+        }
+    </style>
+    <script>
+        window.onload = init;
+
+        function init() {
+            var x = window.innerWidth,
+                y = window.innerHeight;
+            createCircles(x, y);
+        }
+
+        function createCircles(x, y) {
+            var scene = document.getElementById("scene");
+            setInterval(function() {
+                var div = document.createElement("div");
+                div.style.width = div.style.height = getRandomInt(50, 300) + "px";
+                div.style.top = getRandomInt(0, y - parseInt(div.style.height, 10)) + "px";
+                div.style.left = getRandomInt(0, x - parseInt(div.style.width, 10)) + "px";
+                div.style.backgroundColor = getRandomColor();
+                div.onclick = removeCircle;
+                scene.appendChild(div);
+                div.className = "circle fade";
+                setTimeout(function() {
+                    div.style.opacity = 1;
+                }, 300);
+            }, 1000);
+        }
+
+        function removeCircle(e) {
+            var div = e.target;
+            div.style.opacity = 0;
+            setTimeout(function() {
+                div.parentNode.removeChild(div);
+            }, 300);
+        }
+
+        function getRandomColor() {
+            var r = getRandomInt(0, 256),
+                g = getRandomInt(0, 256),
+                b = getRandomInt(0, 256);
+            return "rgb(" + r + ", " + g + ", " + b + ")";
+        }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+    </script>
+</head>
+<body>
+    <div id="scene">
+    </div>
+</body>
+</html>
