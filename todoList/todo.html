@@ -1,1 +1,73 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To-Do List</title>
+    <meta charset="utf-8" />
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="Modernizr.js"></script>
+    <script>
+        Modernizr.load([
+            "todo.js",
+            {
+                test: Modernizr.localstorage,
+                yep: "hasLocalStorage.js",
+                nope:"noLocalStorage.js"
+            },
+            {
+                test: Modernizr.geolocation,
+                yep: "hasGeolocation.js",
+                nope: "noGeolocation.js",
+                complete: function() {
+                    init();
+                }
+            }
+        ]);
+    </script>
+    <link rel="stylesheet" href="todo.css" />
+</head>
+<body>
+    <h1>My To-Do List</h1>
+    <ul id="todoList">
+    </ul>
+    <div id="map">
+    </div>
+    <form>
+        <fieldset>
+            <legend>Add a new to-do item</legend>
+            <div class="tableContainer">
+                <div class="tableRow">
+                    <label for="task">Task: </label>
+                    <input type="text" id="task" size="35" placeholder="get milk" />
+                </div>
+                <div class="tableRow">
+                    <label for="who">Who should do it: </label>
+                    <input type="text" id="who" placeholder="Scott" />
+                </div>
+                <div class="tableRow">
+                    <label for="dueDate">Due Date: </label>
+                    <input type="date" id="dueDate" />
+                </div>
+                <div class="tableRow">
+                    <label for="submit"></label>
+                    <input type="button" id="submitTodo" value="Submit" />
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Search the to-do list</legend>
+            <div>
+                <label for="searchTerm">Search for: </label>
+                <input type="text" id="searchTerm" placeholder="search term" />
+                <input type="button" id="submitSearch" value="Submit" />
+            </div>
+            <div id="searchOption">
+                <input type="checkbox" name="wholeWords" /> Match whole words only
+            </div>
+            <div>
+                <ul id="matchResultsList">
+                </ul>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

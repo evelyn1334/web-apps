@@ -1,0 +1,63 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+legend {
+    font-weight: bold;
+}
+div.tableContainer {
+    display: table;
+    border-spacing: 5px;
+}
+div.tableRow {
+    display: table-row;
+}
+div.tableRow label {
+    display: table-cell;
+    text-align: right;
+}
+div.tableRow input {
+    display: table-cell;
+}
+ul#todoList {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+ul#todoList li {
+    position: relative;
+    padding: 5px;
+    margin: 5px;
+    background-color: #ededed;
+    border: 2px inset #ededed;
+}
+ul#todoList li span.notDone {
+    margin-right: 10px;
+    background-color: #ff9999;
+    cursor: pointer;
+}
+ul#todoList li span.done {
+    margin-right: 10px;
+    background-color: #80cc80;
+    cursor: pointer;
+}
+ul#todoList li span.delete {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+}
+fieldset {
+    margin: 20px 0px;
+}
+div#searchOption {
+    font-size: small;
+}
+div#searchOption input {
+    vertical-align: middle;
+}
+div#map {
+    width: 400px;
+    height: 400px;
+    display: none;
+    margin-left: 20px;
+}
